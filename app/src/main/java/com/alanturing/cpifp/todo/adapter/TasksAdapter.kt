@@ -1,15 +1,27 @@
 package com.alanturing.cpifp.todo.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.alanturing.cpifp.todo.EditToDoActivity
+import com.alanturing.cpifp.todo.MainActivity
 import com.alanturing.cpifp.todo.databinding.TodoItemBinding
 import com.alanturing.cpifp.todo.model.Task
 
-class TasksAdapter(val datos:List<Task>): RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
-    inner class TaskViewHolder(binding: TodoItemBinding): RecyclerView.ViewHolder(binding.root) {
+class TasksAdapter(val datos:List<Task>, val onShare:(task:Task,view:View)->Unit, val onEdit:(task:Task,view:View)->Unit): RecyclerView.Adapter<TasksAdapter.TaskViewHolder>() {
+    inner class TaskViewHolder(private val binding: TodoItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bindTask(t:Task){
-            TODO("Asignar los elementos de pantalla")
+            binding.title.text = t.title
+            binding.description.text = t.description
+            binding.isCompleted.isChecked = t.isCompleted
+            binding.share.setOnClickListener {
+                onShare(t, it)
+            }
+            binding.edit.setOnClickListener {
+                onEdit(t, it)
+            }
         }
     }
 
@@ -20,11 +32,10 @@ class TasksAdapter(val datos:List<Task>): RecyclerView.Adapter<TasksAdapter.Task
         return TaskViewHolder(binding)
     }
 
-    override fun getItemCount(): Int {
-        TODO("Not yet implemented")
-    }
+    override fun getItemCount() = datos.size
 
     override fun onBindViewHolder(holder: TaskViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        val task = datos[position]
+        holder.bindTask(task)
     }
 }

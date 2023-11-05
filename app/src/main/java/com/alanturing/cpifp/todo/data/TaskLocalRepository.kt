@@ -6,29 +6,29 @@ class TaskLocalRepository() {
     companion object {
         private var _INSTANCE:TaskLocalRepository? = null
         fun getInstance():TaskLocalRepository {
-            return _INSTANCE ?: TaskLocalRepository()
+            if (_INSTANCE == null) {
+                _INSTANCE = TaskLocalRepository()
+            }
+            return _INSTANCE!!
         }
     }
     private val _tasks = mutableListOf<Task>()
-    init {
-
-        TODO("Borrar cuando el repositorio este listo")
-        _tasks.add(Task(1,"Comprar leche","Leche desnatada",false))
-        _tasks.add(Task(2,"Hacer práctica Android","Completar todos los TODOS",false))
-
-    }
+    private var contador:Int = 0
 
 
     val tasks:List<Task>
         get() = _tasks
 
     fun add(task:Task) {
-        TODO("Código crear tarea")
+        _tasks.add(task)
     }
     fun delete(id:Int) {
         TODO("Código eliminar tarea por id")
     }
     fun update(task:Task) {
-        TODO("Código actualizar tarea con id==id")
+       val updatedTask:Task? = _tasks.find { t -> t.id == task.id }
+        _tasks.set(updatedTask!!.id - 1, updatedTask)
     }
+
+    fun getNextTaskId() = ++contador
 }

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ToDo</string>
+    <string name="completada">Completada</string>
+    <string name="compartir">Compartir</string>
+    <string name="editar">Editar</string>
+    <string name="titulo">Título</string>
+    <string name="descripcion">Descripción</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="crear_tarea">Crear tarea</string>
+    <string name="share_text">La tarea con título %1s y descripción %2s está %3s</string>
+    <string name="status_completada">completada</string>
+    <string name="status_pendiente">pendiente</string>
+    <string name="guardar">Guardar</string>
+</resources>

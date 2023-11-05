@@ -1,6 +1,8 @@
 package com.alanturing.cpifp.todo.model
 
-data class Task(private val id:Int,
-                private val title:String,
-                private val description:String,
-                private val isCompleted: Boolean)
+import java.io.Serializable
+
+data class Task(public val id:Int,
+                public val title:String,
+                public val description:String,
+                public val isCompleted: Boolean):Serializable
