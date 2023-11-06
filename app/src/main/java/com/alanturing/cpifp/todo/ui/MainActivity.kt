@@ -1,12 +1,15 @@
-package com.alanturing.cpifp.todo
+package com.alanturing.cpifp.todo.ui
 
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import com.alanturing.cpifp.todo.R
 import com.alanturing.cpifp.todo.adapter.TasksAdapter
 import com.alanturing.cpifp.todo.data.TaskLocalRepository
 import com.alanturing.cpifp.todo.databinding.ActivityMainBinding
@@ -14,12 +17,13 @@ import com.alanturing.cpifp.todo.model.Task
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
+    private val viewModel:TaskViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    private val getResult =
+    /*private val getResult =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
             when (it.resultCode) {
                 Activity.RESULT_OK -> {
-                    binding.tasks.adapter = TasksAdapter(TaskLocalRepository.getInstance().tasks,
+                    binding.tasks.adapter = TasksAdapter(viewModel.data.value!!,
                         ::onShareItem,
                         ::onEditItem)
                 }
@@ -29,31 +33,38 @@ class MainActivity : AppCompatActivity() {
                         .show()
                 }
             }
-    }
+    }*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.tasks.adapter = TasksAdapter(TaskLocalRepository.getInstance().tasks,
+        setSupportActionBar(binding.topAppBar)
+
+        val tasksAdapter = TasksAdapter(viewModel.data.value!!,
             ::onShareItem,
             ::onEditItem)
-
+        binding.tasks.adapter = tasksAdapter
+        val taskObserver = Observer<List<Task>>{
+             tasksAdapter.submitList(it)
+        }
+        viewModel.data.observe(this,taskObserver)
         binding.createTodo.setOnClickListener {
-            val createIntent = Intent(this,CreateToDoActivity::class.java)
-
-            getResult.launch(createIntent)
+            val createIntent = Intent(this, CreateToDoActivity::class.java)
+            startActivity(createIntent)
         }
 
     }
     fun onEditItem(task:Task,view:View) {
-        val updateIntent = Intent(this,EditItemActivity::class.java)
+        val updateIntent = Intent(this, EditItemActivity::class.java)
         updateIntent.putExtra("com.alanturing.cpifp.todo.TASK",task)
-        getResult.launch(updateIntent)
+        //getResult.launch(updateIntent)
+        startActivity(updateIntent)
     }
     fun onShareItem(task: Task,view: View) {
         val statusText = if (task.isCompleted) "completada"
                          else "pendiente"
-        val shareText = getString(R.string.share_text,
+        val shareText = getString(
+            R.string.share_text,
             task.title,
             task.description,statusText)
 

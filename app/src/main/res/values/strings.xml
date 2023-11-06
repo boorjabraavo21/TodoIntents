@@ -6,4 +6,5 @@
     <string name="cancel_button_text">Cancelar</string>
     <string name="share_text">La tarea con título %1s y descripción %2s esta %3s</string>
     <string name="update_task_btn_label">Actualizar tarea</string>
+    <string name="app_title">Cosas por hacer</string>
 </resources>

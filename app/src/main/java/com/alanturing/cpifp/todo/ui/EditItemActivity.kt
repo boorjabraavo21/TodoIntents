@@ -1,4 +1,4 @@
-package com.alanturing.cpifp.todo
+package com.alanturing.cpifp.todo.ui
 
 import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
@@ -9,16 +9,17 @@ import com.alanturing.cpifp.todo.model.Task
 
 class EditItemActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEditItemBinding
+    private var task: Task? = null
     private val repository:TaskLocalRepository = TaskLocalRepository.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityEditItemBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val task:Task? = intent?.extras?.getParcelable("com.alanturing.cpifp.todo.TASK")
+        task = intent?.extras?.getParcelable("com.alanturing.cpifp.todo.TASK")
         if (task!=null) {
-            binding.titleInput.setText(task.title)
-            binding.descriptionInput.setText(task.description)
-            binding.statusSwitch.isChecked = task.isCompleted
+            binding.titleInput.setText(task!!.title)
+            binding.descriptionInput.setText(task!!.description)
+            binding.statusSwitch.isChecked = task!!.isCompleted
         }
         binding.cancelButton.setOnClickListener {
             setResult(Activity.RESULT_CANCELED)
