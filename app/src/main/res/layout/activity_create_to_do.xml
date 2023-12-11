@@ -4,14 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CreateToDoActivity">
+    tools:context=".ui.CreateToDoActivity">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/topAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        app:navigationIcon="@android:drawable/ic_menu_close_clear_cancel"
+        app:title="Crear tarea"
+        tools:ignore="MissingConstraints" />
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/title_label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/titulo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/topAppBar"
+        app:layout_constraintStart_toEndOf="@id/topAppBar"
         android:layout_margin="16dp">
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/title_input"
@@ -31,26 +40,4 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </com.google.android.material.textfield.TextInputLayout>
-
-    <Button
-        android:id="@+id/cancel_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="50dp"
-        android:text="@string/cancelar"
-        app:layout_constraintEnd_toEndOf="@+id/create_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description_label" />
-
-    <Button
-        android:id="@+id/create_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/crear_tarea"
-        android:layout_marginLeft="50dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@id/cancel_button"
-        app:layout_constraintTop_toBottomOf="@id/description_label" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,12 +1,9 @@
 package com.alanturing.cpifp.todo.adapter
 
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.alanturing.cpifp.todo.EditToDoActivity
-import com.alanturing.cpifp.todo.MainActivity
 import com.alanturing.cpifp.todo.databinding.TodoItemBinding
 import com.alanturing.cpifp.todo.model.Task
 

@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <!-- TODO: Dar formato al item para que se vea titulo, descripción y estado dentro de un MaterialCard -->
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
+        style="@style/Widget.Material3.CardView.Filled"
         tools:ignore="MissingConstraints">
 
         <LinearLayout
