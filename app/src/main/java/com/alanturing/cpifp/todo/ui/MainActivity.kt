@@ -17,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 class MainActivity : AppCompatActivity() {
     private val viewModel:TaskViewModel by viewModels()
     private lateinit var binding: ActivityMainBinding
-    /*private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+    private val getResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         when (it.resultCode) {
             Activity.RESULT_OK -> {
                 binding.tasks.adapter = TasksAdapter(viewModel.data.value!!, ::onShareItem, ::onEditItem)
@@ -26,7 +26,6 @@ class MainActivity : AppCompatActivity() {
                 Snackbar.make(this,binding.root,"Se ha cancelado",Snackbar.LENGTH_SHORT).show()
             }
         }
-    }*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)

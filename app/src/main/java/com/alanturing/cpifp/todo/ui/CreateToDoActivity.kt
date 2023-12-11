@@ -1,6 +1,7 @@
 package com.alanturing.cpifp.todo.ui
 
 import android.app.Activity
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
@@ -23,7 +24,6 @@ class CreateToDoActivity : AppCompatActivity() {
             finish()
         }
     }
-
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.form_menu, menu)
         return super.onCreateOptionsMenu(menu)

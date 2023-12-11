@@ -12,8 +12,8 @@ class TaskLocalRepository() {
             return _INSTANCE!!
         }
     }
-    private val _tasks = mutableListOf<Task>()
     private var contador:Int = 0
+    private val _tasks = mutableListOf<Task>()
 
 
     val tasks:List<Task>
