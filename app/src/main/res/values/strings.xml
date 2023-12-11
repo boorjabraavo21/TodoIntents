@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">ToDo</string>
+    <string name="completada">Completed</string>
+    <string name="compartir">Share</string>
+    <string name="editar">Edit</string>
+    <string name="titulo">Title</string>
+    <string name="descripcion">Description</string>
+    <string name="cancelar">Cancel</string>
+    <string name="crear_tarea">Create task</string>
+    <string name="share_text">The task with title %1s and description %2s is %3s</string>
+    <string name="status_completada">completed</string>
+    <string name="status_pendiente">not completed</string>
+    <string name="guardar">Save</string>
 </resources>
